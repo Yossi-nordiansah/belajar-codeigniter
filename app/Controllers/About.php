@@ -5,8 +5,8 @@ namespace App\Controllers;
 
 class About extends BaseController {
     
-    public function index($nama = "Yossi Nordiansah"){
-        echo "Hallo nama saya $nama";
+    public function index($nama = "Yossi Nordiansah", $usia = 26){
+        echo "Hallo nama saya $nama, saya berusia $usia";
     }
 
 }
