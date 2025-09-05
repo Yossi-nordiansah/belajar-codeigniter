@@ -38,6 +38,31 @@ class Komik extends BaseController
     }
 
     public function save(){
+
+        if(!$this->validate([
+            'judul' => [
+                'rules' => 'required|is_unique[komik.judul] ',
+                'errors' => [
+                    'required' => "Judul Komik Wajib Di Isi",
+                    'is_unique' => "Judul Komik Sudah Terdaftar"
+                ]
+                ],
+            'penulis' => [
+                'rules' => "required",
+                'errors' => [
+                    'required' => "Penulis Wajib Di Isi"
+                ]
+                ],
+            'penerbit' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => "Penerbit Wajib Di isi"
+                ]
+                ]
+        ])){
+            return redirect()->back()->withInput();
+        }
+
         $slug = url_title($this->request->getVar('judul'), '-', true);
         $this->komikModel->save([
             'judul' => $this->request->getVar('judul'),

@@ -1,5 +1,4 @@
 <?= $this->extend('layout/template'); ?>
-
 <?= $this->section('content'); ?>
 <div class="container">
     <div class="row">
@@ -50,19 +49,28 @@
                     <?= csrf_field(); ?>
                     <div class="mb-3">
                         <label for="judul" class="form-label">Judul</label>
-                        <input type="text" class="form-control" id="judul" name="judul" autofocus>
+                        <input type="text" class="form-control <?= validation_show_error('judul') ? 'is-invalid' : ''; ?>" id="judul" name="judul" autofocus value="<?= old('judul'); ?>">
+                        <div class="invalid-feedback">
+                            <?= validation_show_error('judul') ?>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="penulis" class="form-label">Penulis</label>
-                        <input type="text" class="form-control" id="penulis" name="penulis" autofocus>
+                        <input type="text" class="form-control <?= validation_show_error('penulis') ? 'is-invalid' : ''; ?>" id="penulis" name="penulis" value="<?= old('penulis'); ?>">
+                        <div class="invalid-feedback">
+                            <?= validation_show_error('penulis') ?>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="penerbit" class="form-label">Penerbit</label>
-                        <input type="text" class="form-control" id="penerbit" name="penerbit" autofocus>
+                        <input type="text" class="form-control <?= validation_show_error('penerbit') ? 'is-invalid' : ''; ?>" id="penerbit" name="penerbit" value="<?= old('penerbit'); ?>">
+                        <div class="invalid-feedback">
+                            <?= validation_show_error('penerbit') ?>
+                        </div>
                     </div>
                     <div class="mb-3">
-                        <label for="sampul" class="form-label">Sampul</label>
-                        <input type="text" class="form-control" id="sampul" name="sampul" autofocus>
+                        <label for="sampul" class="form-label ">Sampul</label>
+                        <input type="text" class="form-control" id="sampul" name="sampul">
                     </div>
                     <button type="submit" class="btn btn-primary">Tambahkan</button>
                 </form>
