@@ -45,32 +45,36 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/komik/save" method="post">
+                <form action="/komik/save" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
-                    <div class="mb-3">
+                    <div class="mb-1">
                         <label for="judul" class="form-label">Judul</label>
                         <input type="text" class="form-control <?= validation_show_error('judul') ? 'is-invalid' : ''; ?>" id="judul" name="judul" autofocus value="<?= old('judul'); ?>">
                         <div class="invalid-feedback">
                             <?= validation_show_error('judul') ?>
                         </div>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-1">
                         <label for="penulis" class="form-label">Penulis</label>
                         <input type="text" class="form-control <?= validation_show_error('penulis') ? 'is-invalid' : ''; ?>" id="penulis" name="penulis" value="<?= old('penulis'); ?>">
                         <div class="invalid-feedback">
                             <?= validation_show_error('penulis') ?>
                         </div>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-1">
                         <label for="penerbit" class="form-label">Penerbit</label>
                         <input type="text" class="form-control <?= validation_show_error('penerbit') ? 'is-invalid' : ''; ?>" id="penerbit" name="penerbit" value="<?= old('penerbit'); ?>">
                         <div class="invalid-feedback">
                             <?= validation_show_error('penerbit') ?>
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="sampul" class="form-label ">Sampul</label>
-                        <input type="text" class="form-control" id="sampul" name="sampul">
+                    <div class="mb-1">
+                        <label for="sampul" class="custom-file-label">Sampul</label>
+                        <img src="/img/default.jpg" alt="" width="30" class="mt-1 mb-1 img-preview">
+                        <input class="form-control <?= validation_show_error('sampul') ? 'is-invalid' : ''; ?>" type="file" id="sampul" name="sampul" onchange="previewImage()">
+                        <div class="invalid-feedback">
+                            <?= validation_show_error('sampul') ?>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Tambahkan</button>
                 </form>
